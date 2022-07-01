@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 
-import { View } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 
 //Em forma de Função
 /*function App(){
@@ -149,33 +154,91 @@ import { View } from 'react-native';
     -'center': Coloca no centro da tela - (Horizontal)
     -'space-between': Coloca um espaço entre os itens, exceto antes do primeiro e após o ultimo - (Horizontal)
     -'space-between': Coloca um espaço entre os itens, inclusive antes do primeiro e após o último - (Horizontal)
+        -'stretch': Completa a linha
   *alignItems:
     -'flex-start': Coloca no inicio da tela (default) - (Vertical)
     -'center': Coloca no centro da tela - (Vertical)
     -'space-between': Coloca um espaço entre os itens, exceto antes do primeiro e após o ultimo - (Vertical)
     -'space-between': Coloca um espaço entre os itens, inclusive antes do primeiro e após o último - (Vertical)
+    -'stretch': Completa a linha se flexDirection estiver column e width não estiver definid, ou completa a coluna se flexDirection estiver row e não tiver height definido 
+      ->flexDirection tem que ser 'column' e não pode ter width definida
 */
+// class App extends Component{
+//   render(){
+//     return(
+//       <View style={{flex:1, 
+//                     flexDirection:'row', 
+//                     alignItems:'stretch',
+//                     // justifyContent:'stretch'                  
+//                     }}>
+//         <View style={{ width:50, backgroundColor: 'red'}}>
+
+//         </View>
+//         <View style={{width:50, backgroundColor: 'green'}}>
+
+//         </View>
+//         <View style={{width:50, backgroundColor: 'blue'}}>
+
+//         </View>
+//       </View>
+//     )
+//   }
+// }
+
+//Input
 class App extends Component{
+
+  constructor(props){
+    super(props);
+    this.state = {
+      nome : ''
+    }
+    this.pegaNome = this.pegaNome.bind(this)
+  }
+
+  pegaNome(texto){
+    if(texto.length > 0){
+
+      this.setState({nome:'Bem Vindo ' + texto})
+    } else {
+      this.setState({nome:''})
+
+    }
+  }
+
   render(){
+
     return(
-      <View style={{flex:1, 
-                    flexDirection:'row', 
-                    alignItems:'center',
-                    justifyContent:'center'                  
-                    }}>
-        <View style={{width:50, height:50, backgroundColor: 'red'}}>
-
-        </View>
-        <View style={{width:50, height:50, backgroundColor: 'green'}}>
-
-        </View>
-        <View style={{width:50, height:50, backgroundColor: 'blue'}}>
-
-        </View>
+      <View style={styles.container}>
+        <TextInput 
+        style={styles.input} 
+        placeholder="Digite seu nome"
+        underlineColorAndroid="transparente"
+        onChangeText={this.pegaNome}
+        />
+        <Text style={styles.texto}>{this.state.nome}</Text>
       </View>
-    )
+    );
   }
 }
 
+const styles = StyleSheet.create({
+  container:{
+    flex: 1,
+  },
+  input:{
+    height: 45,
+    borderWidth:1,
+    borderColor:'#222',
+    margin: 10,
+    marginTop:40,
+    fontSize:20,
+    padding: 10,
+  },
+  texto:{
+    textAlign:'center',
+    fontSize:25,
+  }
+})
 
 export default App;
