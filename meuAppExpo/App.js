@@ -82,24 +82,31 @@ class App extends Component{
   render(){
     return(
       <View style={styles.area}>
-        <Button title='Entrar' onPress={() => this.entrar('Higor')}/>
+        <View style={styles.part1}>
+          <Button title='Entrar' onPress={() => this.entrar('Higor')}/>
 
-        <Text style={styles.estilo_nome}>
-          {this.state.nome}
-        </Text>
+          <Text style={styles.estilo_nome}>
+            {this.state.nome}
+          </Text>
+
+        </View>
+
+        <View style={styles.part2}>
+          <Text>
+            {this.state.nome}
+          </Text>
+        </View>
         
-        <Text>
-          {this.state.nome}
+        <View style={styles.part3}>
+          <Text style={styles.estilo_nome}>
+            {this.state.nome}
+          </Text>
+          
+          <Text style={[styles.estilo_nome, styles.bord]}>
+            {this.state.nome}
         </Text>
-        
-        <Text style={styles.estilo_nome}>
-          {this.state.nome}
-        </Text>
-        
-        <Text style={[styles.estilo_nome, styles.bord]}>
-          {this.state.nome}
-        </Text>
-        
+        </View>
+     
       </View>
     );
   }
@@ -112,11 +119,27 @@ const styles = StyleSheet.create({
   textAlign:'center'
   },
   area: {
+    flex: 1,
+    backgroundColor:'#222',
     marginTop:40
   },
   bord : {
     padding: 24,
     color:'black',
   },
+  part1 :{
+    backgroundColor:'red',
+    height: 65,
+    // flex: 1,
+  },
+  part2 : {
+    backgroundColor:'green',
+    flex: 2,
+  },
+  part3 : {
+    backgroundColor: 'yellow',
+    height: 65,
+    // flex: 2,
+  }
 });
 export default App;
