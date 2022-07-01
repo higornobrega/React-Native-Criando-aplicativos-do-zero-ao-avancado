@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 
-import {
-  Button,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { View } from 'react-native';
 
 //Em forma de Função
 /*function App(){
@@ -64,82 +59,123 @@ import {
 
 //Em forma de Componentização com states
 
+// class App extends Component{
+//   constructor(props){
+//     super(props);
+//     this.state = {
+//       nome: ''
+//     }
+//     this.entrar = this.entrar.bind(this) //Deixa a função visível para a classe
+//   }
+
+//   entrar(nome){
+//     this.setState({
+//       nome:nome
+//     })
+//   }
+
+//   render(){
+//     return(
+//       <View style={styles.area}>
+//         <View style={styles.part1}>
+//           <Button title='Entrar' onPress={() => this.entrar('Higor')}/>
+
+//           <Text style={styles.estilo_nome}>
+//             {this.state.nome}
+//           </Text>
+
+//         </View>
+
+//         <View style={styles.part2}>
+//           <Text>
+//             {this.state.nome}
+//           </Text>
+//         </View>
+        
+//         <View style={styles.part3}>
+//           <Text style={styles.estilo_nome}>
+//             {this.state.nome}
+//           </Text>
+          
+//           <Text style={[styles.estilo_nome, styles.bord]}>
+//             {this.state.nome}
+//         </Text>
+//         </View>
+     
+//       </View>
+//     );
+//   }
+// }
+
+// const styles = StyleSheet.create({
+//   estilo_nome: {
+//   fontSize:23, 
+//   color:'red', 
+//   textAlign:'center'
+//   },
+//   area: {
+//     flex: 1,
+//     backgroundColor:'#222',
+//     marginTop:40
+//   },
+//   bord : {
+//     padding: 24,
+//     color:'black',
+//   },
+//   part1 :{
+//     backgroundColor:'red',
+//     height: 65,
+//     // flex: 1,
+//   },
+//   part2 : {
+//     backgroundColor:'green',
+//     flex: 2,
+//   },
+//   part3 : {
+//     backgroundColor: 'yellow',
+//     height: 65,
+//     // flex: 2,
+//   }
+// });
+
+
+//Flex box e alinhamento
+/*
+  *flexDirection:
+    -'column': Alinha em coluna(Vertical), um abaixo do outro (default)
+    -'row': Alinha em linha(Horizontal), um ao lado do outro 
+  *justifyContent:
+    -'flex-start': Coloca no inicio da tela (default) - (Horizontal)
+    -'center': Coloca no centro da tela - (Horizontal)
+    -'space-between': Coloca um espaço entre os itens, exceto antes do primeiro e após o ultimo - (Horizontal)
+    -'space-between': Coloca um espaço entre os itens, inclusive antes do primeiro e após o último - (Horizontal)
+  *alignItems:
+    -'flex-start': Coloca no inicio da tela (default) - (Vertical)
+    -'center': Coloca no centro da tela - (Vertical)
+    -'space-between': Coloca um espaço entre os itens, exceto antes do primeiro e após o ultimo - (Vertical)
+    -'space-between': Coloca um espaço entre os itens, inclusive antes do primeiro e após o último - (Vertical)
+*/
 class App extends Component{
-  constructor(props){
-    super(props);
-    this.state = {
-      nome: ''
-    }
-    this.entrar = this.entrar.bind(this) //Deixa a função visível para a classe
-  }
-
-  entrar(nome){
-    this.setState({
-      nome:nome
-    })
-  }
-
   render(){
     return(
-      <View style={styles.area}>
-        <View style={styles.part1}>
-          <Button title='Entrar' onPress={() => this.entrar('Higor')}/>
-
-          <Text style={styles.estilo_nome}>
-            {this.state.nome}
-          </Text>
+      <View style={{flex:1, 
+                    flexDirection:'row', 
+                    alignItems:'center',
+                    justifyContent:'center'                  
+                    }}>
+        <View style={{width:50, height:50, backgroundColor: 'red'}}>
 
         </View>
+        <View style={{width:50, height:50, backgroundColor: 'green'}}>
 
-        <View style={styles.part2}>
-          <Text>
-            {this.state.nome}
-          </Text>
         </View>
-        
-        <View style={styles.part3}>
-          <Text style={styles.estilo_nome}>
-            {this.state.nome}
-          </Text>
-          
-          <Text style={[styles.estilo_nome, styles.bord]}>
-            {this.state.nome}
-        </Text>
+        <View style={{width:50, height:50, backgroundColor: 'blue'}}>
+
         </View>
-     
       </View>
-    );
+    )
   }
 }
 
-const styles = StyleSheet.create({
-  estilo_nome: {
-  fontSize:23, 
-  color:'red', 
-  textAlign:'center'
-  },
-  area: {
-    flex: 1,
-    backgroundColor:'#222',
-    marginTop:40
-  },
-  bord : {
-    padding: 24,
-    color:'black',
-  },
-  part1 :{
-    backgroundColor:'red',
-    height: 65,
-    // flex: 1,
-  },
-  part2 : {
-    backgroundColor:'green',
-    flex: 2,
-  },
-  part3 : {
-    backgroundColor: 'yellow',
-    height: 65,
-    // flex: 2,
-  }
-});
+
 export default App;
