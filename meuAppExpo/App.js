@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import {
   Button,
+  StyleSheet,
   Text,
   View,
 } from 'react-native';
@@ -80,16 +81,42 @@ class App extends Component{
 
   render(){
     return(
-      <View style={{marginTop: 20}}>
+      <View style={styles.area}>
         <Button title='Entrar' onPress={() => this.entrar('Higor')}/>
 
-        <Text style={{fontSize:23, color:'red', textAlign:'center'}}>
+        <Text style={styles.estilo_nome}>
           {this.state.nome}
         </Text>
+        
+        <Text>
+          {this.state.nome}
+        </Text>
+        
+        <Text style={styles.estilo_nome}>
+          {this.state.nome}
+        </Text>
+        
+        <Text style={[styles.estilo_nome, styles.bord]}>
+          {this.state.nome}
+        </Text>
+        
       </View>
     );
   }
 }
 
-
+const styles = StyleSheet.create({
+  estilo_nome: {
+  fontSize:23, 
+  color:'red', 
+  textAlign:'center'
+  },
+  area: {
+    marginTop:40
+  },
+  bord : {
+    padding: 24,
+    color:'black',
+  },
+});
 export default App;
